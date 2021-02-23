@@ -1,7 +1,7 @@
 class ClienteController {
     constructor() {
         this._inputNumero =
-            document.querySelector("#conta");
+            document.querySelector("#cliente");
         this._inputSaldo =
             document.querySelector("#saldo");
         this._inputNome =

@@ -1,7 +1,7 @@
 class ClienteController {
     constructor() {
         this._inputNumero =
-            document.querySelector("#cliente");
+            document.querySelector("#conta");
         this._inputSaldo =
             document.querySelector("#saldo");
         this._inputNome =
@@ -13,9 +13,26 @@ class ClienteController {
     }
     inserir(evento) {
         evento.preventDefault();
-        let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value), new Conta(this._inputNumero.value, parseFloat(this._inputSaldo.value)));
-        this._clientes.inserir(novoCliente);
-        this.inserirContaNoHTML(novoCliente);
+        if (this._contas.pesquisar(this._inputNumero.value) == undefined) {
+            let novaConta = new Conta(this._inputNumero.value, parseFloat(this._inputSaldo.value));
+            let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value), novaConta);
+            this._contas.inserir(novaConta);
+            this._clientes.inserir(novoCliente);
+            this.inserirContaNoHTML(novoCliente);
+        }
+        else {
+            alert("Essa conta já está em uso!");
+        }
+    }
+    pesquisar(evento) {
+        evento.preventDefault;
+        if (this._clientes.pesquisar(parseInt(this._inputCpf.value)) == undefined) {
+            alert("Esse cliente não existe!");
+        }
+        else {
+            let resultado = this._clientes.pesquisar(parseInt(this._inputCpf.value));
+            alert(`O cliente é : ${resultado}`);
+        }
     }
     listar() {
         this._clientes.listar().forEach(cliente => {
@@ -30,6 +47,7 @@ class ClienteController {
         botaoApagar.addEventListener('click', (event) => {
             console.log('removendo cliente ' + cliente.toString());
             this._clientes.remover(cliente.cpf);
+            this._contas.remover(this._inputNumero.value);
             event.target.parentElement.remove();
         });
         elementoP.appendChild(botaoApagar);

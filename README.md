@@ -1,3 +1,6 @@
+<h5><b>Aluna: </b> Yohanna de Oliveira Cavalcanti</h5>
+<h5><b>Matricula: </b> 20191370003 </h5>
+
 1. Desenvolver a classe Cliente, contendo como atributos: nome, cpf e uma conta (apenas para simplificar), e seus respectivos métodos get e set;
 2. Desenvolver a classe Clientes, que armazenará todos os clientes do banco num array de clientes (atributo da classe), e terá os seguintes métodos:
    2.1 inserir, que recebe um parâmetro do tipo Cliente inserirá um cliente no array de clientes da classe Clientes
@@ -8,3 +11,6 @@
 4. Criar o html clientes.html, que terá os inputs para acrescentar para inserir um novo cliente, e inserirá as referências para os arquivos .js necessários
 5. Desenvolver a classe ClienteController, que fará a ponte entre a tela e as ações que podem ser feitas em clientes
 6. Desenvolver a classe ClienteEspecial, que herda de Cliente e tem uma lista de dependentes (array de Cliente) (mas a tela de Cliente não precisa pensar em colocar os dependentes, apenas um cliente básico)
+
+Foram implementadas algumas restrições, por exemplo, um Cliente com um nome diferente não pode ter o mesmo CPF, mas 1 cliente pode ter várias contas,
+e uma conta não pode ser usada por mais de 1 cliente.

@@ -9,9 +9,8 @@ class Clientes {
     }
 
     inserir(cliente: Cliente): void {
-        this._clientes.push(cliente);
+            this._clientes.push(cliente);
     }
-
     remover(cpf: number): void {
         const clienteRemover = this.pesquisar(cpf);
         if (clienteRemover) {

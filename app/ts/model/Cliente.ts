@@ -3,7 +3,7 @@
 
 class Cliente {
 
-    constructor(private _nome: string,private _cpf: number, private _conta : Conta) {
+    constructor(protected _nome: string,protected _cpf: number, protected _conta : Conta) {
      
     }
 
@@ -21,6 +21,7 @@ class Cliente {
     set nome(nome){
         this._nome = nome;
     }
+
 
     toString(): string {
         return `

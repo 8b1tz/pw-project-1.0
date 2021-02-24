@@ -1,3 +1,5 @@
+/*Desenvolver a classe ClienteController, que fará a ponte entre a tela e as ações que podem ser feitas em clientes */
+
 class ClienteController {
 
     private _inputNumero: HTMLInputElement;
@@ -25,12 +27,17 @@ class ClienteController {
         evento.preventDefault();
         if (this._contas.pesquisar(this._inputNumero.value) == undefined){
             let novaConta = new Conta(this._inputNumero.value,parseFloat(this._inputSaldo.value));
-            let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value),novaConta);
-            this._contas.inserir(novaConta);
-            this._clientes.inserir(novoCliente);
-            this.inserirContaNoHTML(novoCliente);
-            
-        }else{
+            if(this._clientes.pesquisar(parseInt(this._inputCpf.value)) == undefined || this._clientes.pesquisar(parseInt(this._inputCpf.value)).nome == this._inputNome.value){
+                let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value),novaConta);
+                this._contas.inserir(novaConta);
+                this._clientes.inserir(novoCliente);
+                this.inserirContaNoHTML(novoCliente);
+            }
+            else {
+                alert("Esse CPF esta sendo usado por pessoa!")
+            }
+        }
+        else{
             alert("Essa conta já está em uso!");
             
         }
@@ -43,7 +50,7 @@ class ClienteController {
         }
         else{
             let resultado = this._clientes.pesquisar(parseInt(this._inputCpf.value))
-            alert(`O cliente é : ${resultado}`);
+            alert(`O cliente é : ${resultado.nome}`);
         }
     }
 

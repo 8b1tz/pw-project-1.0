@@ -1,7 +1,7 @@
 <h5><b>Aluna: </b> Yohanna de Oliveira Cavalcanti</h5>
 <h5><b>Matricula: </b> 20191370003 </h5>
-<b>Site: </b>https://8b1tz.github.io/pw-projeto-1/app/clientes.html
-<br>
+<b>Site:</b>https://8b1tz.github.io/pw-projeto-1/app/clientes.html
+<br></br>
 1. Desenvolver a classe Cliente, contendo como atributos: nome, cpf e uma conta (apenas para simplificar), e seus respectivos métodos get e set;
 2. Desenvolver a classe Clientes, que armazenará todos os clientes do banco num array de clientes (atributo da classe), e terá os seguintes métodos:
    2.1 inserir, que recebe um parâmetro do tipo Cliente inserirá um cliente no array de clientes da classe Clientes

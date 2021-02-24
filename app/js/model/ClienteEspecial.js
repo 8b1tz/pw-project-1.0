@@ -3,8 +3,8 @@
  (mas a tela de Cliente não precisa pensar em colocar os dependentes, apenas um cliente básico)
 */
 class ClienteEspecial extends Cliente {
-    constructor(_nome, _cpf, _conta, _dependetes = []) {
+    constructor(_nome, _cpf, _conta, _dependentes) {
         super(_nome, _cpf, _conta);
-        this._dependetes = _dependetes;
+        this._dependentes = _dependentes;
     }
 }

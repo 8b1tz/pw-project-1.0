@@ -29,9 +29,9 @@ class ClienteController {
             let novaConta = new Conta(this._inputNumero.value,parseFloat(this._inputSaldo.value));
             if(this._clientes.pesquisar(parseInt(this._inputCpf.value)) == undefined || this._clientes.pesquisar(parseInt(this._inputCpf.value)).nome == this._inputNome.value){
                 let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value),novaConta);
-                this._contas.inserir(novaConta);
                 this._clientes.inserir(novoCliente);
-                this.inserirContaNoHTML(novoCliente);
+                this._contas.inserir(novaConta);
+                this.inserirClienteContaNoHTML(novoCliente, novaConta);
             }
             else {
                 alert("Esse CPF esta sendo usado por pessoa!")
@@ -57,12 +57,12 @@ class ClienteController {
     listar() {
         this._clientes.listar().forEach(
             cliente => {
-                this.inserirContaNoHTML(cliente);
+                this.inserirClienteNoHTML(cliente);
             }
         );
     }
 
-    inserirContaNoHTML(cliente: Cliente) {
+    inserirClienteContaNoHTML(cliente: Cliente, conta : Conta) {
         const elementoP = document.createElement('p');
         elementoP.textContent = cliente.toString();
         const botaoApagar = document.createElement('button');
@@ -71,13 +71,27 @@ class ClienteController {
             (event) => {
                 console.log('removendo cliente ' + cliente.toString());
                 this._clientes.remover(cliente.cpf);
-                this._contas.remover(this._inputNumero.value);
+                this._contas.remover((conta.numero));
                 (<Element>event.target).parentElement.remove();
             }
             );
         elementoP.appendChild(botaoApagar);
         document.body.appendChild(elementoP);
     }
-
+    inserirClienteNoHTML(cliente: Cliente) {
+        const elementoP = document.createElement('p');
+        elementoP.textContent = cliente.toString();
+        const botaoApagar = document.createElement('button');
+        botaoApagar.textContent = 'X';
+        botaoApagar.addEventListener('click',
+            (event) => {
+                console.log('removendo cliente ' + cliente.toString());
+                this._clientes.remover(cliente.cpf);
+                (<Element>event.target).parentElement.remove();
+            }
+            );
+        elementoP.appendChild(botaoApagar);
+        document.body.appendChild(elementoP);
+    }
 
 }

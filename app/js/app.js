@@ -7,8 +7,10 @@ const c2 = new Conta('2', 200);
 cl.inserir(new Cliente('Maria', 11100322311, c1));
 cl.inserir(new Cliente('Carlos', 20022222211, c2));
 console.log(cl.pesquisar(11100322311));
-console.log(cl.listar());
+console.log(cl.pesquisar(20022222211));
 cl.remover(20022222211);
-console.log(cl.listar());
+let lista = cl.listar();
+for (let i = 0; i < lista.length; i++) {
+    console.log(lista[i]);
+}
 cl.remover(11100322311);
-console.log(cl.listar());

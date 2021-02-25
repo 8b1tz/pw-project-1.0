@@ -10,7 +10,7 @@ console.log(cl.pesquisar(11100322311));
 console.log(cl.pesquisar(20022222211));
 cl.remover(20022222211);
 let lista = cl.listar();
-for (let i = 0; i < lista.length; i++) {
+for (let i in lista) {
     console.log(lista[i]);
 }
 cl.remover(11100322311);

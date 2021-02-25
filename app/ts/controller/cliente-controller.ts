@@ -25,7 +25,7 @@ class ClienteController {
     inserir(evento: Event) {
         evento.preventDefault();
         if (this._contas.pesquisar(this._inputNumero.value) == undefined){
-            let novaConta = new Conta(this._inputNumero.value,parseFloat(this._inputSaldo.value));
+            let novaConta  = new Conta(this._inputNumero.value,parseFloat(this._inputSaldo.value));
             if(this._clientes.pesquisar(parseInt(this._inputCpf.value)) == undefined || this._clientes.pesquisar(parseInt(this._inputCpf.value)).nome == this._inputNome.value){
                 let novoCliente = new Cliente(this._inputNome.value, parseInt(this._inputCpf.value),novaConta);
                 this._clientes.inserir(novoCliente);
@@ -60,7 +60,7 @@ class ClienteController {
             }
         );
     }
-
+    
     inserirClienteContaNoHTML(cliente: Cliente, conta : Conta) {
         const elementoP = document.createElement('p');
         elementoP.textContent = cliente.toString();
@@ -69,14 +69,16 @@ class ClienteController {
         botaoApagar.addEventListener('click',
             (event) => {
                 console.log('removendo cliente ' + cliente.toString());
-                this._clientes.remover(cliente.cpf);
-                this._contas.remover((conta.numero));
+                this._clientes.remover(cliente.cpf); 
+                this._contas.remover(conta.numero);
+                this._contas.remover(this._inputNumero.value);
                 (<Element>event.target).parentElement.remove();
             }
             );
         elementoP.appendChild(botaoApagar);
         document.body.appendChild(elementoP);
     }
+
     inserirClienteNoHTML(cliente: Cliente) {
         const elementoP = document.createElement('p');
         elementoP.textContent = cliente.toString();
@@ -85,7 +87,8 @@ class ClienteController {
         botaoApagar.addEventListener('click',
             (event) => {
                 console.log('removendo cliente ' + cliente.toString());
-                this._clientes.remover(cliente.cpf);
+                this._clientes.remover(cliente.cpf); 
+                this._contas.remover(this._inputNumero.value);
                 (<Element>event.target).parentElement.remove();
             }
             );

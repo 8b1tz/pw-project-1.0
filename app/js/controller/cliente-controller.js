@@ -1,4 +1,3 @@
-/*Desenvolver a classe ClienteController, que fará a ponte entre a tela e as ações que podem ser feitas em clientes */
 class ClienteController {
     constructor() {
         this._inputNumero =
@@ -53,7 +52,8 @@ class ClienteController {
         botaoApagar.addEventListener('click', (event) => {
             console.log('removendo cliente ' + cliente.toString());
             this._clientes.remover(cliente.cpf);
-            this._contas.remover((conta.numero));
+            this._contas.remover(conta.numero);
+            this._contas.remover(this._inputNumero.value);
             event.target.parentElement.remove();
         });
         elementoP.appendChild(botaoApagar);
@@ -67,6 +67,7 @@ class ClienteController {
         botaoApagar.addEventListener('click', (event) => {
             console.log('removendo cliente ' + cliente.toString());
             this._clientes.remover(cliente.cpf);
+            this._contas.remover(this._inputNumero.value);
             event.target.parentElement.remove();
         });
         elementoP.appendChild(botaoApagar);

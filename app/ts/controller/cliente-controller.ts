@@ -1,4 +1,3 @@
-/*Desenvolver a classe ClienteController, que fará a ponte entre a tela e as ações que podem ser feitas em clientes */
 
 class ClienteController {
 
